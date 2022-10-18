@@ -29,8 +29,25 @@ note: this app does not follow the typical user authentication process: voters d
 - PG 6.x
 - charts.js 
 
+## getting started 
+
+Create the .env by using .env.example as a reference: cp .env.example .env
+Update the .env file with your correct local information
+username: labber
+password: labber
+database: midterm
+Install dependencies: npm i
+Fix to binaries for sass: npm rebuild node-sass
+Reset database: npm run db:reset
+Check the db folder to see what gets created and seeded in the SDB
+Run the server: npm run local
+Note: nodemon is used, so you should not have to restart your server
+Visit http://localhost:8080/
+
 
 ## Seeding database
+\i db/schema/01_users.sql
+\i db/seeds/01_users.sql
 \i db/schema/02_polls.sql
 \i db/seeds/02_polls.sql
 \i db/schema/03_options.sql
