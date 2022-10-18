@@ -1,13 +1,14 @@
 const { Pool } = require('pg');
 const { getUsers } = require('../db/queries/users');
 const pool = new Pool({
-  user: 'vagrant',
-  password: '123',
-  host: 'localhost',
-  database: 'midterm'
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
 });
-
-
+console.log(process.env)
+pool.connect()
 
 const addUser =  function(user) {
   return pool
@@ -79,7 +80,11 @@ const addsurvey =  function(user) {
 
 const getOptions = function (pollId) {
   return pool
-  .query(`SELECT * FROM options WHERE poll_id = $1`, [pollId])
+  .query(`
+  SELECT title, name_required
+  FROM options 
+  JOIN polls ON poll_id = polls.id
+  WHERE poll_id = $1`, [pollId])
   .then ((result) => {
     return result.rows
   })
