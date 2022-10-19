@@ -27,7 +27,12 @@ note: this app does not follow the typical user authentication process: voters d
 - Node 10.x or above
 - NPM 5.x or above
 - PG 6.x
+- ejs
+- express
 - charts.js 
+- morgan
+- mailgun-js
+- node-sass-middleware
 
 ## getting started 
 
