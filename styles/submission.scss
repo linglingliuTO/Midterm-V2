@@ -5,9 +5,12 @@
   align-items:  center;
 }
 
-.option {
+
+.ui-state-default {
+  list-style-type:none;
   width: 90%;
   margin-top: 5px;
   border: 1px solid #545149;
+  background-color: none;
   cursor: move;
 }
