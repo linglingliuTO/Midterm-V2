@@ -3,7 +3,7 @@ const router  = express.Router();
 const {addUser} = require('../server/database')
 
 router.get('/', (req, res) => {
-  res.render('registration');
+  res.render('login');
 });
 
 router.post('/', (req, res) => {
@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
       return;
     }
     req.session.userId = user.id;
-    res.send("🤗"); //(redirect to login page)
+    res.redirect("/newpoll");
   })
   .catch(e => res.send(e));
 });

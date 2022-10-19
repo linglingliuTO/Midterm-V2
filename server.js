@@ -29,7 +29,7 @@ app.use(express.static('public'));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 
-const registrationRoutes = require('./routes/registration');
+const loginRoutes = require('./routes/login');
 const newpollRoutes = require('./routes/newpoll');
 const resultsRoutes = require('./routes/results');
 const submissionsRoutes = require('./routes/submissions');
@@ -39,7 +39,7 @@ const adminRoutes = require('./routes/admin');
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 
 
-app.use('/registration', registrationRoutes);
+app.use('/login', loginRoutes);
 app.use('/newpoll', newpollRoutes);
 app.use('/results', resultsRoutes);
 app.use('/submissions', submissionsRoutes);
