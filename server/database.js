@@ -81,7 +81,7 @@ const addsurvey =  function(user) {
 const getOptions = function (pollId) {
   return pool
   .query(`
-  SELECT title, name_required
+  SELECT options.id, title, name_required
   FROM options 
   JOIN polls ON poll_id = polls.id
   WHERE poll_id = $1`, [pollId])

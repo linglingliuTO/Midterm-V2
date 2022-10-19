@@ -16,12 +16,16 @@
       <h1>submissions</h1>
 
       <form method="POST" action="/submissions">
-        <input type="text" name="answer" placeholder="name" />
+        <input type="text" name="name" placeholder="name" />
         <div>Question: <%= options[0].name_required %></div>
 
         <ul class="container">
+          <% index = 0 %>
           <% for (let each of options ) { %>
+          <input type="hidden" name= 'options[<%= index %>][options_id]' value="<%= each.id %>">
+          <input type="hidden" name= 'options[<%= index%>][ordinal]' value="<%= index %>">
           <li class="ui-state-default"><%= each.title %></li>
+          <% index += 1 %>
           <%} %>
         </ul>
 

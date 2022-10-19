@@ -21,8 +21,9 @@ router.get('/:pollID', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const {answer} = req.body
-  console.log(answer)
+  const {name} = req.body
+  console.log('req.body', req.body)
+  console.log(name)
   res.redirect('/')
 })
 
