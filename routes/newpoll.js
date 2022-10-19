@@ -12,5 +12,9 @@ router.get('/', (req, res) => {
   res.render('newpoll');
 });
 
+router.post('/', (req, res) => {
+
+})
+
 module.exports = router;
 
