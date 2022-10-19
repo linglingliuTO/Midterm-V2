@@ -1,6 +1,7 @@
 const db = require('../connection');
 const generateRandomString = require('../../server/helper.js').generateRandomString;
 
+
 const addPoll = (req) => {
   const sub_link = generateRandomString();
   const admin_link = generateRandomString();
