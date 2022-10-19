@@ -7,13 +7,19 @@
 
 const express = require('express');
 const router  = express.Router();
+const addPoll = require('../db/queries/polls.js').addPoll;
 
 router.get('/', (req, res) => {
   res.render('newpoll');
 });
 
 router.post('/', (req, res) => {
+  req.session.userId = 1;
   console.log(req.body);
+  addPoll(req)
+  .then(rows => {
+    console.log(rows);
+  })
 
 })
 

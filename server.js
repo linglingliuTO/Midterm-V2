@@ -8,6 +8,13 @@ const morgan = require('morgan');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
+const cookieSession = require("cookie-session")
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['dinosaur'],
+  maxAge: 24 * 60 * 60 * 1000
+}));
 
 app.set('view engine', 'ejs');
 
