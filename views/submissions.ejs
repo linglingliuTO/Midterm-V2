@@ -18,7 +18,7 @@
         <div>Question: <%= options[0].name_required %></div>
 
         <% for (let each of options ) { %>
-        <div class="option"><%= each.title %></div>
+        <div draggable=true class="option"><%= each.title %></div>
         <%} %>
         <button type="submit">submit</button>
       </form>
