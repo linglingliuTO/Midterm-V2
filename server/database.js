@@ -1,5 +1,4 @@
 const { Pool } = require('pg');
-const { getUsers } = require('../db/queries/users');
 const pool = new Pool({
   user: 'vagrant',
   password: '123',
@@ -88,5 +87,22 @@ const getOptions = function (pollId) {
   })
 }
 
+// get user info to login
 
-module.exports = {addUser,getPollResults,adminView,deletePoll,getOptions};
+const getUserWithEmail = function (email) {
+  console.log(email)
+  return pool
+    .query(`SELECT * FROM users WHERE email = $1`, [`${email.trim()}`])
+    .then ((result) => {
+      console.log("this is testing", result.rows[0])
+      console.log(result.rows)
+      return result.rows[0]
+    })
+    .catch((err) => {
+      console.log("this is error", err)
+      return err.message;
+    })
+};
+
+
+module.exports = {addUser,getPollResults,adminView,deletePoll,getOptions, getUserWithEmail};
