@@ -10,11 +10,17 @@
 </head>
 
 <body>
-  <h1>Results</h1>
 
-  <div class="mt-8 border border-1 border-dark">
-    <canvas id="myChart" width="100" heght ="100"></canvas>
+ 
+  <div class="container text-center">
+  <canvas id="myChart" width="800" height="500"></canvas>
   </div>
+
+
+
+
+
+
 
   <script>
     const labels = <%- JSON.stringify(labelsData) %>;
@@ -27,21 +33,27 @@
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
         data: datapoints,
+        
       }]
     };
 
     const config = {
       type: 'bar',
       data: data,
-      options: {}
+      options: {
+        responsive: false,
+        indexAxis: 'y',
+        
+      }
     };
-
 
 
   const myChart = new Chart(
     document.getElementById('myChart'),
     config
   );
+
+  
 </script>
 
 </body>
