@@ -11,7 +11,7 @@
 
 <body>
 
-
+  <form method="post" action="/newPoll">
   <div class="container text-center">
     <h2>Create Your Poll</h2>
     <!-- <p class="lead">Please enter your options below</p> -->
@@ -19,7 +19,7 @@
       <div class="col">
         <div class="mb-3">
           <label for="poll_question" class="form-label">Please Enter Poll Question</label>
-          <input type="Question" class="form-control" id="poll_question" placeholder="Enter Question Here">
+          <input type="Question" class="form-control" id="poll_question" placeholder="Enter Question Here" name="question">
         </div>
       </div>
     </div>
@@ -30,6 +30,16 @@
       <div class="row">
         <div class="col-4">
           <div class="mb-3">
+<<<<<<< HEAD
+      
+            <label for="option_1" class="form-label">Option 1</label>
+            <input type="text" class="form-control" id="option_1" placeholder="add option" name="option1">
+          </div>
+        </div>
+        <div class="col">
+          <label for="option_1_description" class="form-label">Optional Description </label>
+          <input type="text" class="form-control" id="option_1_description" placeholder="describe option" name="description1">
+=======
             <label for="option_1" class="option">Option 1</label>
             <input type="text" class="form-control" id="option_1" placeholder="add option">
           </div>
@@ -37,11 +47,21 @@
         <div class="col">
           <label for="option_1_description" class="label">Optional Description </label>
           <input type="text" class="form-control" id="option_1_description" placeholder="describe option">
+>>>>>>> main
         </div>
       </div>
       <div class="row">
         <div class="col-4">
           <div class="mb-3">
+<<<<<<< HEAD
+            <label for="option_2" class="form-label">Option 2</label>
+            <input type="text" class="form-control" id="option_2" placeholder="add option" name="option2">
+          </div>
+        </div>
+        <div class="col">
+          <label for="option_2_description" class="form-label">Optional Description</label>
+          <input type="text" class="form-control" id="option_2_description" placeholder="describe option" name="description2">
+=======
             <label for="option_2" class="option">Option 2</label>
             <input type="text" class="form-control" id="option_2" placeholder="add option">
           </div>
@@ -49,11 +69,21 @@
         <div class="col">
           <label for="option_2_description" class="label">Optional Description</label>
           <input type="text" class="form-control" id="option_2_description" placeholder="describe option">
+>>>>>>> main
         </div>
       </div>
       <div class="row">
         <div class="col-4">
           <div class="mb-3">
+<<<<<<< HEAD
+            <label for="option_3" class="form-label">Option 3</label>
+            <input type="text" class="form-control" id="option_3" placeholder="add option" name="option3">
+          </div>
+        </div>
+        <div class="col">
+          <label for="option_3_description" class="form-label">Optional Description</label>
+          <input type="text" class="form-control" id="option_3_description" placeholder="describe option" name="description3">
+=======
             <label for="option_3" class="option">Option 3</label>
             <input type="text" class="form-control" id="option_3" placeholder="add option">
           </div>
@@ -61,6 +91,7 @@
         <div class="col">
           <label for="option_3_description" class="label">Optional Description</label>
           <input type="text" class="form-control" id="option_3_description" placeholder="describe option">
+>>>>>>> main
         </div>
       </div>
     </div>
@@ -68,19 +99,19 @@
 
     <div class ="Submissions">
       <div class="row">
-        <form class="row row-cols-lg-auto g-3 align-items-center">
+        <div class="row row-cols-lg-auto g-3 align-items-center">
           <div class="col-12">
             <label class="visually-hidden" for="user_email">Username</label>
             <div class="input-group">
               <div class="input-group-text">@email</div>
-              <input type="email" class="form-control" id="user_email" placeholder="email">
+              <input type="email" class="form-control" id="user_email" placeholder="email" name="email">
             </div>
           </div>
 
           <div class="col-12">
             <button type="submit" class="btn btn-primary" >Submit</button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
     <button id="deletePollbtn" class="btn btn-outline-primary">Delete</button>
@@ -90,11 +121,16 @@
 
 
   </div>
+<<<<<<< HEAD
+</form>
+=======
 </body>
 
 
+>>>>>>> main
 <footer>
 
 </footer>
+</body>
 
 </html>
