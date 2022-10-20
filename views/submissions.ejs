@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>Submissions</title>
+    <%- include('partials/_header') %>
+    <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/styles/submission.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 
-<head>
-  <title>Submissions</title>
-  <%- include('partials/_header') %>
-</head>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="/scripts/submission.js"></script>
+  </head>
 
-<body>
-  <h1>submissions</h1>
-  <form method="POST" action="/submissions">
-    <input type="text" name="answer" placeholder="name">
-    <div>option 1</div>
-    <div>option 2</div>
-    <div>option 3</div>
-    <div>option 4</div>
-    <button type="submit">submit</button>
-  </form>
-</body>
-<footer>
-  <%- include('partials/_footer') %>
-</footer>
+  <body>
+    <section class="main">
+      <h1>submissions</h1>
 
+      <form method="POST" action="/submissions">
+        <input type="text" name="name" placeholder="name" />
+        <div>Question: <%= options[0].name_required %></div>
+
+        <ul class="container">
+          <% index = 0 %>
+          <% for (let each of options ) { %>
+          <input type="hidden" name= 'options[<%= index %>][options_id]' value="<%= each.id %>">
+          <input type="hidden" name= 'options[<%= index%>][ordinal]' value="<%= index %>">
+          <li class="ui-state-default"><%= each.title %></li>
+          <% index += 1 %>
+          <%} %>
+        </ul>
+
+        <button type="submit">submit</button>
+      </form>
+    </section>
+  </body>
+  <footer><%- include('partials/_footer') %></footer>
 </html>

@@ -15,7 +15,6 @@ insert into OPTIONS (title, created_at, description, poll_id) values ('Happiness
 insert into OPTIONS (title, created_at, description, poll_id) values ('Informant', '8/11/2022', 'Documentary',2);
 insert into OPTIONS (title, created_at, description, poll_id) values ('Assault on Precinct 13', '8/19/2022', 'Action|Thriller',2);
 insert into OPTIONS (title, created_at, description, poll_id) values ('Charlie: The Life and Art of Charles Chaplin', '5/24/2022', 'Documentary',2);
-insert into OPTIONS (title, created_at, description, poll_id) values ('Tycoon (Oligarkh)', '4/4/2022', 'Crime|Drama', 1);
 insert into OPTIONS (title, created_at, description, poll_id) values ('City of Pirates (La ville des pirates) ', '9/9/2022', 'Drama|Fantasy', 2);
 insert into OPTIONS (title, created_at, description, poll_id) values ('''Twas the Night Before Christmas', '10/25/2021', 'Animation|Children|Fantasy', 2);
 insert into OPTIONS (title, created_at, description, poll_id) values ('''Twas the Night Before Christmas', '10/25/2021', 'Animation|Children|Fantasy', 3);
