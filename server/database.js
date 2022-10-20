@@ -26,7 +26,9 @@ const getPollResults =  function(poll_id) {
   return pool
   .query(`SELECT distinct title, sum(rank) as result from options join submissions on options.id = option_id where options.poll_id = ($1) group by 1;`, [poll_id])
   .then ((result) => {
+    console.log("query results", result.rows)
     return result.rows;
+
   })
   .catch((err) => {
     return err.message;
@@ -81,7 +83,7 @@ const getOptions = function (pollId) {
   return pool
   .query(`
   SELECT options.id, title, name_required
-  FROM options 
+  FROM options
   JOIN polls ON poll_id = polls.id
   WHERE poll_id = $1`, [pollId])
   .then ((result) => {
