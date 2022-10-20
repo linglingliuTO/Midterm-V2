@@ -1,18 +1,18 @@
 $(document).ready(function () {
 
-  const deleteOption = ()=> {
+  const deleteOption = () => {
     const optionContainer = document.getElementById('options-parent');
     const optionRow = optionContainer.children;
-    const lastRow = document.querySelectorAll('.option').length-1
-    if (lastRow > 1 )  { optionRow[lastRow].remove()}
-    else {alert( "Cannot Remove , need  at least 2 Options" )};
+    const lastRow = document.querySelectorAll('.option').length - 1
+    if (lastRow > 1) { optionRow[lastRow].remove() }
+    else { alert("Cannot Remove , need  at least 2 Options") };
 
 
   }
 
-  const getMarkup =(lastRow) => {
-    const  $markup = $(
-    `
+  const getMarkup = (lastRow) => {
+    const $markup = $(
+      `
     <div class="row">
     <div class="col-4">
       <div class="mb-3">
@@ -26,22 +26,22 @@ $(document).ready(function () {
     </div>
   </div>
   `  )
-  return $markup;
-    }
+    return $markup;
+  }
 
 
-  const addOption = ()=> {
-    const lastRow = document.querySelectorAll('.option').length+1
-    $optionElement= getMarkup(lastRow)
-     console.log(lastRow)
+  const addOption = () => {
+    const lastRow = document.querySelectorAll('.option').length + 1
+    $optionElement = getMarkup(lastRow)
+    console.log(lastRow)
     if (lastRow > 5) {
-      alert( "Cannot Add , Max 5 Options" )
-     } else {
-    $("#options-parent").append($optionElement)
-     }
+      alert("Cannot Add , Max 5 Options")
+    } else {
+      $("#options-parent").append($optionElement)
+    }
 
   }
 
-  $("#deletePollbtn").on("click",  deleteOption);
-  $("#addPollbtn").on("click", addOption );
- })
+  $("#deletePollbtn").on("click", deleteOption);
+  $("#addPollbtn").on("click", addOption);
+})

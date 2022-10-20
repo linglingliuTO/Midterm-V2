@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const {getOptions,submitOptions} = require('../db/queries/submit_poll')
+const {getOptions,submitOptions} = require('../db/queries/submitpoll')
 
 router.get('/:pollID', (req, res) => {
 
@@ -34,7 +34,6 @@ router.post('/', (req, res) => {
   submitOptions(voter_name,option_id,rank,poll_id)
   .then(rows => {
   console.log("in router:" ,rows)
-
   res.send()
 
 })

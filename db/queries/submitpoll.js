@@ -20,7 +20,7 @@ const getOptions = function (pollId) {
 
 const submitOptions = function (voter_name, option_id,rank,poll_id) {
   return pool
-  .query( 'INSERT INTO submissions (voter_name , option_id, rank , poll_id) VALUES ($1, $2, $3, $4) RETURNING *;',[voter_name, option_id, rank, poll_id])
+  .query( 'INSERT INTO submissions (voter_name, option_id, rank, poll_id) VALUES ($1, $2, $3, $4) RETURNING *;',[voter_name, option_id, rank, poll_id])
   .then ((result) => {
     // console.log(result.rows)
     return result.rows

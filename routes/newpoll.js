@@ -7,8 +7,8 @@
 
 const express = require('express');
 const router  = express.Router();
-const addPoll = require('../db/queries/polls.js').addPoll;
-const addOptions = require('../db/queries/options.js').addOptions;
+const addPoll = require('../db/queries/addpoll.js').addPoll;
+const addOptions = require('../db/queries/addoptions.js').addOptions;
 
 router.get('/', (req, res) => {
   res.render('newpoll');
