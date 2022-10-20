@@ -24,7 +24,6 @@ router.get('/:pollID', (req, res) => {
 router.post('/', (req, res) => {
 
 
-  res.send()
 
   const voter_name = req.body.voter_name
   const option_id  = req.body.option_id
@@ -35,6 +34,9 @@ router.post('/', (req, res) => {
   submitOptions(voter_name,option_id,rank,poll_id)
   .then(rows => {
   console.log("in router:" ,rows)
+
+  res.send()
+
 })
 
 })
