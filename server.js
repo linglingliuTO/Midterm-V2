@@ -9,7 +9,7 @@ const cookieSession = require('cookie-session');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
-const cookieSession = require("cookie-session")
+
 
 app.use(cookieSession({
   name: 'session',
