@@ -7,24 +7,38 @@
 
 const express = require('express');
 const router  = express.Router();
-const {getOptions} = require('../server/database')
+const {getOptions,submitOptions} = require('../db/queries/submit_poll')
 
 router.get('/:pollID', (req, res) => {
+
   const poll_ID = req.params.pollID
   getOptions(poll_ID)
   .then(options => {
     const tempVars = { options: options }
-    console.log('tempVars', tempVars)    
+    console.log('tempVars', tempVars)
     res.render('submissions', tempVars)
    })
    .catch(e => res.send(e));
 });
 
 router.post('/', (req, res) => {
-  const {name} = req.body
-  console.log('req.body', req.body)
-  console.log(name)
-  res.redirect('/')
+
+
+
+  const voter_name = req.body.voter_name
+  const option_id  = req.body.option_id
+  const rank  = req.body.rank
+  const poll_id  = req.body.poll_id
+
+
+  submitOptions(voter_name,option_id,rank,poll_id)
+  .then(rows => {
+  console.log("in router:" ,rows)
+
+  res.send()
+
+})
+
 })
 
 

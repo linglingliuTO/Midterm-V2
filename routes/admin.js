@@ -4,7 +4,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const {adminView, deletePoll} = require('../server/database')
+const {adminView, deletePoll} = require('../db/queries/admin')
 
 
 router.get('/:userID', (req, res) => {

@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-const {getUserWithEmail} = require('../server/database')
+const {getUserWithEmail} = require('../db/queries/login')
 
 router.get('/', (req, res) => {
   res.render('login');

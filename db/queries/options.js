@@ -11,7 +11,7 @@ const addOptions = (req, poll_id) => {
   const options = {hour: '2-digit', minute: '2-digit', second: '2-digit'};
   const today  = new Date();
   const createdAt = today.toLocaleDateString("en-US", options);
-  
+
   return db.query(
     'INSERT INTO options (title, created_at, poll_id, description) VALUES ($1, $2, $3, $4), ($5, $2, $3, $6 ), ($7, $2, $3, $8) RETURNING *;',
      [question1, createdAt, poll_id, description1, question2, description2, question3, description3])
