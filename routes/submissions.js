@@ -14,7 +14,6 @@ router.get('/:pollID', (req, res) => {
   getOptions(poll_ID)
   .then(options => {
     const tempVars = { options: options }
-    console.log('tempVars', tempVars)    
     res.render('submissions', tempVars)
    })
    .catch(e => res.send(e));
@@ -22,8 +21,6 @@ router.get('/:pollID', (req, res) => {
 
 router.post('/', (req, res) => {
   const {name} = req.body
-  console.log('req.body', req.body)
-  console.log(name)
   res.redirect('/')
 })
 
