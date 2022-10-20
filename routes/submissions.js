@@ -9,19 +9,21 @@ const express = require('express');
 const router  = express.Router();
 const {getOptions} = require('../server/database')
 
-router.get('/', (req, res) => {
-  const option = {
-    option1: "hi1",
-    option2: 'hi2',
-    option3: 'hi3',
-    option4: 'hi4'
-  }
-  res.render('submissions', option);
+router.get('/:pollID', (req, res) => {
+  const poll_ID = req.params.pollID
+  getOptions(poll_ID)
+  .then(options => {
+    const tempVars = { options: options }
+    console.log('tempVars', tempVars)    
+    res.render('submissions', tempVars)
+   })
+   .catch(e => res.send(e));
 });
 
 router.post('/', (req, res) => {
-  const {answer} = req.body
-  console.log(answer)
+  const {name} = req.body
+  console.log('req.body', req.body)
+  console.log(name)
   res.redirect('/')
 })
 
