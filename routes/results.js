@@ -4,7 +4,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const {getPollResults, getPollName} = require('../db/queries/results')
+const {getPollResults, getPollName} = require('../db/queries/getresults')
 const {getArray} = require('../server/helper')
 
 
