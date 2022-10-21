@@ -23,8 +23,6 @@ router.get('/:pollID', (req, res) => {
 
 router.post('/', (req, res) => {
 
-
-
   const voter_name = req.body.voter_name
   const option_id  = req.body.option_id
   const rank  = req.body.rank

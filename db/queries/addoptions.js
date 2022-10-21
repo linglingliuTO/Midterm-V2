@@ -8,6 +8,7 @@ const addOptions = (req, poll_id) => {
   const description2 = req.body.description2
   const question3 = req.body.option3
   const description3 = req.body.description3
+
   const options = {hour: '2-digit', minute: '2-digit', second: '2-digit'};
   const today  = new Date();
   const createdAt = today.toLocaleDateString("en-US", options);

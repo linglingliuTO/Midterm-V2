@@ -50,6 +50,7 @@ router.get('/', (req, res) => {
           return;
         }
         req.session.email = user.email;
+        req.session.id = user.id;
         res.send({user: {name: user.name, email: user.email, id: user.id}});
       })
       .catch(e => res.send(e));
