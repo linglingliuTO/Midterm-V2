@@ -9,7 +9,8 @@ const express = require('express');
 const router = express.Router();
 const { addPoll } = require('../db/queries/addpoll.js')
 const { addOptions } = require('../db/queries/addoptions.js');
-const { sendMail } = require('../server/mailgun.js');
+const { sendMailsetup } = require('../server/mailgun.js');
+const { getLinks} = require('../db/queries/submitpoll')
 const { generateRandomString } = require('../server/helper.js');
 
 router.get('/', (req, res) => {
@@ -35,11 +36,22 @@ router.post('/', (req, res) => {
         let p = addOptions(req.body.option[i], poll_id, req.body.description[i])
         arr.push(p)
       }
+
       Promise.all(arr).then(results => {
-        console.log("promise all", results)
-        res.redirect(`/admin/${req.session.id}`)
+        getLinks( results[0][0].poll_id)
+        .then (results => {
+          const name = results[0].name
+          const email = results[0].email
+          const resultsLink = `http://localhost:8080/results/${results[0].sub_link}`
+          const submissionLink = `http://localhost:8080/submissions/${results[0].admin_link}`
+          // console.log(name, email, resultLink, submissionLink,results)
+          sendMailsetup(name, email, resultsLink, submissionLink)
+        })
+
+
 
       })
+      res.redirect(`/admin/${req.session.id}`)
     })
     // .then( {
 

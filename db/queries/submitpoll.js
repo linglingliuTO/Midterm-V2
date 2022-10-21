@@ -31,7 +31,7 @@ const submitOptions = function (voter_name, option_id,rank,poll_id) {
 
 const getLinks = function (poll_id) {
   return pool
-  .query( `SELECT sub_link, admin_link, name_required from polls where id = $1` ,[poll_id])
+  .query( `SELECT sub_link, admin_link, name_required, email, name from polls left join users on polls.user_id = users.id where polls.id = $1` ,[poll_id])
   .then ((result) => {
     return result.rows
   })

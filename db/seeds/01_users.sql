@@ -1,4 +1,4 @@
-insert into USERS (registered, email, password, name) values (true, '123@test.com', '123', 'Test User');
+insert into USERS (registered, email, password, name) values (true, 'testlhlcompass@gmail.com', '123', 'Test User');
 -- insert into USERS (registered, email, password, name) values (false, 'jgilyott1@cocolog-nifty.com', 'lLAGL8LmY', 'Jasmin Gilyott');
 -- insert into USERS (registered, email, password, name) values (false, 'dsheriff2@ihg.com', 'UjRlEB2GqB', 'Denver Sheriff');
 -- insert into USERS (registered, email, password, name) values (false, 'ysteele3@canalblog.com', 'D7exm7mRA7g', 'Yvon Steele');

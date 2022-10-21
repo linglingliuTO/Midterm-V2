@@ -8,7 +8,7 @@
 const express = require('express');
 const router  = express.Router();
 const {getOptions,submitOptions, getLinks} = require('../db/queries/submitpoll')
-const { sendMail } = require('../server/mailgun.js');
+const {  sendMailvoted  } = require('../server/mailgun.js');
 
 
 
@@ -36,23 +36,20 @@ router.post('/', (req, res) => {
     arr.push(p)
   }
   Promise.all(arr).then(results => {
-    console.log("promise all", results)
+     getLinks(results[0][0].poll_id)
+     .then (results => {
+      const name = results[0].name
+      const email = results[0].email
+      const resultsLink = `http://localhost:8080/results/${results[0].sub_link}`
+      const submissionLink = `http://localhost:8080/submissions/${results[0].admin_link}`
+      // console.log(name, email, resultLink, submissionLink,results)
+      sendMailvoted(name, email, resultsLink, submissionLink)
+    })
+    .catch(e => res.send(e));
     res.redirect(`/admin/${req.session.id}`)
   })
 
 
-//   submitOptions(voter_name,option_id,rank,poll_id)
-//   .then(rows => {
-//     getLinks (rows[0].poll_id)
-//     .then (rows => {
-//       console.log(rows)
-//     })
-//     // .then(rows => {
-//     //   console.log(rows)
-//     // //   testData = rows[0].poll_id
-//     // //   // sendMail(testData);
-//   // })
-// })
 
 })
 

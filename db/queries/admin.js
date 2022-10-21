@@ -10,7 +10,6 @@ const adminView =function(user_id) {
   return pool
   .query(`SELECT distinct name_required, polls.id, sub_link, admin_link from polls where polls.user_id = ($1)`, [user_id])
   .then ((result) => {
-    console.log("admin Query:" ,result.rows)
     return result.rows;
 
   })

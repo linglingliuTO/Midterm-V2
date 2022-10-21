@@ -5,12 +5,9 @@ const getUserWithEmail = function (email) {
   return pool
     .query(`SELECT * FROM users WHERE email = $1`, [`${email.trim()}`])
     .then ((result) => {
-      console.log("this is testing", result.rows[0])
-      console.log(result.rows)
       return result.rows[0]
     })
     .catch((err) => {
-      console.log("this is error", err)
       return err.message;
     })
 };
