@@ -6,10 +6,12 @@
  */
 
 const express = require('express');
-const router  = express.Router();
-const addPoll = require('../db/queries/addpoll.js').addPoll;
-const addOptions = require('../db/queries/addoptions.js').addOptions;
-const {sendMail} = require('../server/mailgun.js');
+const router = express.Router();
+const { addPoll } = require('../db/queries/addpoll.js')
+const { addOptions } = require('../db/queries/addoptions.js');
+const { sendMailsetup } = require('../server/mailgun.js');
+const { getLinks} = require('../db/queries/submitpoll')
+const { generateRandomString } = require('../server/helper.js');
 
 router.get('/', (req, res) => {
   res.render('newpoll');
@@ -18,17 +20,46 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   // remove when session handeling is added
   // addPoll = (user_id, sub_link, admin_link, name_required)
-   addPoll(req.session.id, 1, 1, req.body.question)
-  .then(rows => {
-    const poll_id = rows[0].id;
-    addOptions(req, poll_id)
+  const uniqueKey = generateRandomString()
+
+  admin_link = uniqueKey
+  sub_link = uniqueKey
+
+
+  addPoll(req.session.id, sub_link, admin_link, req.body.question)
     .then(rows => {
-      testData = rows[0].poll_id
+      const poll_id = rows[0].id;
+      req.session.pollId = poll_id
+      const arr = []
 
-      sendMail(testData);
+      for (let i = 0; i < req.body.option.length; i++) {
+        let p = addOptions(req.body.option[i], poll_id, req.body.description[i])
+        arr.push(p)
+      }
+
+      Promise.all(arr).then(results => {
+        getLinks( results[0][0].poll_id)
+        .then (results => {
+          const name = results[0].name
+          const email = results[0].email
+          const resultsLink = `http://localhost:8080/results/${results[0].sub_link}`
+          const submissionLink = `http://localhost:8080/submissions/${results[0].admin_link}`
+          // console.log(name, email, resultLink, submissionLink,results)
+          sendMailsetup(name, email, resultsLink, submissionLink)
+        })
+
+
+
+      })
+      res.redirect(`/admin/${req.session.id}`)
+    })
+    // .then( {
+
+    // //   testData = rows[0].poll_id
+    // //   // sendMail(testData);
+
 
 })
-})
-})
+
 module.exports = router;
 

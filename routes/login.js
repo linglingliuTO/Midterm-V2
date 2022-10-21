@@ -51,14 +51,17 @@ router.get('/', (req, res) => {
         }
         req.session.email = user.email;
         req.session.id = user.id;
-        res.send({user: {name: user.name, email: user.email, id: user.id}});
+        req.session.name = user.name
+        console.log(req.session.id, req.session.name, req.session.email)
+        // res.send({user: {name: user.name, email: user.email, id: user.id}});
+        res.redirect("/newpoll")
       })
       .catch(e => res.send(e));
   });
 
   router.post('/logout', (req, res) => {
     req.session.email = null;
-    res.send({});
+
   });
 
 //   router.get("/me", (req, res) => {

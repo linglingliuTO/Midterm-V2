@@ -12,13 +12,14 @@ $(document).ready(function () {
   const recordResults = (e) => {
     e.preventDefault()
     let itemOrder = $('#options-container').sortable("toArray");
-    const pollId = window.location.pathname.split("/")[2]
+    const pollId =  $('#poll_id').data("value")
+
+
     const voterName = $("#user_input_name").val()
-    for (let i = 0; i < itemOrder.length; i++) {
+
       const newSubmission = {
         voter_name: voterName,
-        option_id: itemOrder[i],
-        rank: itemOrder.length - i,
+        option_id: itemOrder,
         poll_id: pollId,
       }
       $.ajax({
@@ -42,7 +43,7 @@ $(document).ready(function () {
 
         });
 
-    }
+
 
 
   }

@@ -8,7 +8,7 @@ const {adminView, deletePoll} = require('../db/queries/admin')
 
 
 router.get('/:userID', (req, res) => {
-  const user_ID = req.params.userID
+  const user_ID = req.session.id
   adminView(user_ID)
   .then(adminTable => {
    const templateVars = {adminTable,user_ID};
@@ -21,9 +21,10 @@ router.get('/:userID', (req, res) => {
 
 
 router.post('/:userID/:pollID/delete', (req, res) => {
+  const user_ID = req.session.id
   deletePoll(req.params.pollID,req.params.userID)
   .then(adminTable => {
-    res.send("deleted");
+    res.redirect(`/admin/${user_ID}`);
   })
   .catch(e => res.send(e));
 });
