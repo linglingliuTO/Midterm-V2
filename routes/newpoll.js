@@ -9,6 +9,7 @@ const express = require('express');
 const router  = express.Router();
 const addPoll = require('../db/queries/addpoll.js').addPoll;
 const addOptions = require('../db/queries/addoptions.js').addOptions;
+const {sendMail} = require('../server/mailgun.js');
 
 router.get('/', (req, res) => {
   res.render('newpoll');
@@ -16,20 +17,18 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   // remove when session handeling is added
-  req.session.userId = 1;
-  console.log('req.body', req.body);
-  addPoll(req)
+  // addPoll = (user_id, sub_link, admin_link, name_required)
+   addPoll(req.session.id, 1, 1, req.body.question)
   .then(rows => {
     const poll_id = rows[0].id;
-    console.log('add poll', rows);
     addOptions(req, poll_id)
     .then(rows => {
-      console.log('add option', rows);
-    })
+      testData = rows[0].poll_id
 
-  })
+      sendMail(testData);
 
 })
-
+})
+})
 module.exports = router;
 

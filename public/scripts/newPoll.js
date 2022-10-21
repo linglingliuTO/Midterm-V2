@@ -1,6 +1,7 @@
 $(document).ready(function () {
-
-  const deleteOption = () => {
+  // deleting an option on the form
+  const deleteOption = (e) => {
+    e.preventDefault()
     const optionContainer = document.getElementById('options-parent');
     const optionRow = optionContainer.children;
     const lastRow = document.querySelectorAll('.option').length - 1
@@ -9,32 +10,30 @@ $(document).ready(function () {
 
 
   }
-
   const getMarkup = (lastRow) => {
     const $markup = $(
-      `
+    `
     <div class="row">
     <div class="col-4">
       <div class="mb-3">
         <label for="option_3" class="option">Option ${lastRow}</label>
-        <input type="text" class="form-control" id="option_3" placeholder="add option">
+        <input type="text" class="form-control" id="option_${lastRow}" placeholder="add option">
       </div>
     </div>
     <div class="col">
       <label for="option_3_description" class="label">Optional Description</label>
-      <input type="text" class="form-control" id="option_3_description" placeholder="describe option">
+      <input type="text" class="form-control" id="option_${lastRow}_description" placeholder="describe option">
     </div>
   </div>
   `  )
     return $markup;
   }
-
-
-  const addOption = () => {
+  // adding an option on the form
+  const addOption = (e) => {
+    e.preventDefault()
     const lastRow = document.querySelectorAll('.option').length + 1
     $optionElement = getMarkup(lastRow)
-    console.log(lastRow)
-    if (lastRow > 5) {
+    if (lastRow > 4) {
       alert("Cannot Add , Max 5 Options")
     } else {
       $("#options-parent").append($optionElement)
@@ -42,6 +41,55 @@ $(document).ready(function () {
 
   }
 
-  $("#deletePollbtn").on("click", deleteOption);
-  $("#addPollbtn").on("click", addOption);
+
+
+
+  $("#deleteOptionBtn").on("click", deleteOption);
+  $("#addOptionBtn").on("click", addOption);
+
+
+
+  // id SERIAL PRIMARY KEY NOT NULL,
+  // user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  // sub_link TEXT NOT NULL,
+  // admin_link TEXT NOT NULL,
+  // name_required VARCHAR(255) NOT NULL
+
+  // id SERIAL PRIMARY KEY NOT NULL,
+  // title VARCHAR(255) NOT NULL (good),
+  // poll_id INTEGER REFERENCES polls(id) ON DELETE CASCADE,
+  // description TEXT
+
+  // const addNewPoll= () => {
+  //   // e.preventDefault()
+  //   const lastRow = document.querySelectorAll('.option').length
+
+  //   const title = $("#poll_question").val()
+  //   const sub_link  = `http://localhost:8080/submissions/`
+  //   console.log(title, sub_link, lastRow)
+  //   // for (let i = 0; i < itemOrder.length; i++) {
+  //   //   const newSubmission = {
+  //   //     voter_name: voterName,
+  //   //     option_id: itemOrder[i],
+  //   //     rank: itemOrder.length - i,
+  //   //     poll_id: pollId,
+  //   //   }
+  //     $.ajax({
+  //       method: 'get',
+  //       url: '/newpoll/',
+  //       data: newSubmission
+  //     })
+
+
+
+  //   }
+
+
+  //   // const recordResults = (e) => {
+  //   //   e.preventDefault()
+  //   //   console.log("hello!")
+  //   // }
+
+  //   $("#createPollbtn").on("click", addNewPoll);
+
 })

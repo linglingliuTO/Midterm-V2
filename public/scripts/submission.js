@@ -7,8 +7,6 @@ $(document).ready(function () {
       }
     });
   });
-
-
   // function to send the data from the order and name back to the router
 
   const recordResults = (e) => {

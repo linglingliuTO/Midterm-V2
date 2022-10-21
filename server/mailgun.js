@@ -9,13 +9,13 @@ const sendMail =  (emailData) => {
    subject: 'Hello',
    text: emailData
   };
+
   mg.messages().send(data, function (error, body) {
    console.log(body);
   });
 
   }
 
-  const testData = 'testing123'
-  sendMail(testData);
+
 
   module.exports = {sendMail};
