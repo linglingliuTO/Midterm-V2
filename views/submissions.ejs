@@ -16,7 +16,7 @@
       <form>
         <input id = "user_input_name" type="text" name="name" placeholder="name" />
         <div>Question: <%= options[0].name_required %></div>
-
+        <div id ="poll_id" data-value=" <%= options[0].poll_id %>"></div>
         <ul id="options-container">
           <% options.forEach((option, i) => { %>
             <li class="ui-state-default" id = '<%= option.id%>'>

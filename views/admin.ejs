@@ -12,15 +12,14 @@
 
   <table class="table table-bordered table-hover table-striped">
     <tr>
-       <th>Poll Name</th><th>Link to Poll</th><th>Link to Result</th><th>Number people Voted</th>
+       <th>Poll Name</th><th>Link to Poll</th><th>Link to Result</th><th>Delete Poll</th>
     </tr>
 
     <% for (var i = 0; i < adminTable.length;  i++) { %>
      <tr>
        <td><%= adminTable[i].name_required %></td>
-       <td><%= adminTable[i].sub_link %></td>
-       <td><%= adminTable[i].admin_link %></td>
-       <td><%= adminTable[i].num_voted  %></td>
+       <td> <a href = "/submissions/<%= adminTable[i].sub_link %>">localhost:8080/submissions/<%= adminTable[i].sub_link %></td>
+       <td><a href = "/results/<%= adminTable[i].sub_link %>">localhost:8080/results/<%= adminTable[i].admin_link %></td>
 
 
        <td><form method="POST" action="/admin/<%= user_ID %>/<%= adminTable[i].id %>/delete"><button type="submit">Delete</button></td>

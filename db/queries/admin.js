@@ -8,9 +8,11 @@ const generateRandomString = require('../../server/helper.js').generateRandomStr
 
 const adminView =function(user_id) {
   return pool
-  .query(`SELECT distinct name_required, polls.id, sub_link, admin_link, count(distinct_voters) as num_voted from polls join (SELECT DISTINCT voter_name as distinct_voters, poll_id from submissions) as sub on polls.id = poll_id where polls.user_id = ($1) group by 1,2,3;`, [user_id])
+  .query(`SELECT distinct name_required, polls.id, sub_link, admin_link from polls where polls.user_id = ($1)`, [user_id])
   .then ((result) => {
+    console.log("admin Query:" ,result.rows)
     return result.rows;
+
   })
   .catch((err) => {
     return err.message;

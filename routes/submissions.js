@@ -9,10 +9,11 @@ const express = require('express');
 const router  = express.Router();
 const {getOptions,submitOptions} = require('../db/queries/submitpoll')
 
-router.get('/:pollID', (req, res) => {
+router.get('/:uniqueKey', (req, res) => {
 
-  const poll_ID = req.params.pollID
-  getOptions(poll_ID)
+  const uniqueKey = req.params.uniqueKey
+
+  getOptions(uniqueKey)
   .then(options => {
     const tempVars = { options: options }
     console.log('tempVars', tempVars)
@@ -22,13 +23,10 @@ router.get('/:pollID', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-
   const voter_name = req.body.voter_name
   const option_id  = req.body.option_id
   const rank  = req.body.rank
   const poll_id  = req.body.poll_id
-
-
   submitOptions(voter_name,option_id,rank,poll_id)
   .then(rows => {
   console.log("in router:" ,rows)

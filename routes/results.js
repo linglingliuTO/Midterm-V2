@@ -8,10 +8,10 @@ const {getPollResults, getPollName} = require('../db/queries/getresults')
 const {getArray} = require('../server/helper')
 
 
-router.get('/:pollID', (req, res) => {
-  getPollResults(req.params.pollID)
+router.get('/:uniqueKey', (req, res) => {
+  getPollResults(req.params.uniqueKey)
   .then(pollresults => {
-    getPollName(req.params.pollID)
+    getPollName(req.params.uniqueKey)
     .then (pollname  => {
     const resultsData = getArray(pollresults,"result")
     const labelsData = getArray(pollresults, "title")

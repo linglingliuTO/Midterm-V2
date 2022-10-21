@@ -12,7 +12,9 @@ $(document).ready(function () {
   const recordResults = (e) => {
     e.preventDefault()
     let itemOrder = $('#options-container').sortable("toArray");
-    const pollId = window.location.pathname.split("/")[2]
+    const pollId =  $('#poll_id').data("value")
+
+    console.log(itemOrder)
     const voterName = $("#user_input_name").val()
     for (let i = 0; i < itemOrder.length; i++) {
       const newSubmission = {
