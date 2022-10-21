@@ -7,7 +7,11 @@
 
 const express = require('express');
 const router  = express.Router();
-const {getOptions,submitOptions} = require('../db/queries/submitpoll')
+const {getOptions,submitOptions, getLinks} = require('../db/queries/submitpoll')
+const { sendMail } = require('../server/mailgun.js');
+
+
+
 
 router.get('/:uniqueKey', (req, res) => {
 
@@ -16,7 +20,6 @@ router.get('/:uniqueKey', (req, res) => {
   getOptions(uniqueKey)
   .then(options => {
     const tempVars = { options: options }
-    console.log('tempVars', tempVars)
     res.render('submissions', tempVars)
    })
    .catch(e => res.send(e));
@@ -25,14 +28,31 @@ router.get('/:uniqueKey', (req, res) => {
 router.post('/', (req, res) => {
   const voter_name = req.body.voter_name
   const option_id  = req.body.option_id
-  const rank  = req.body.rank
   const poll_id  = req.body.poll_id
-  submitOptions(voter_name,option_id,rank,poll_id)
-  .then(rows => {
-  console.log("in router:" ,rows)
-  res.send()
+  const arr = []
+  for (let i = 0; i < option_id.length; i++) {
+    // function (voter_name, option_id,rank,poll_id)
+    let p = submitOptions(voter_name, option_id[i], option_id.length-i, poll_id)
+    arr.push(p)
+  }
+  Promise.all(arr).then(results => {
+    console.log("promise all", results)
+    res.redirect(`/admin/${req.session.id}`)
+  })
 
-})
+
+//   submitOptions(voter_name,option_id,rank,poll_id)
+//   .then(rows => {
+//     getLinks (rows[0].poll_id)
+//     .then (rows => {
+//       console.log(rows)
+//     })
+//     // .then(rows => {
+//     //   console.log(rows)
+//     // //   testData = rows[0].poll_id
+//     // //   // sendMail(testData);
+//   // })
+// })
 
 })
 

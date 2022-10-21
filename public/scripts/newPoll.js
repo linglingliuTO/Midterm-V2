@@ -10,19 +10,21 @@ $(document).ready(function () {
 
 
   }
+
+
   const getMarkup = (lastRow) => {
     const $markup = $(
     `
     <div class="row">
     <div class="col-4">
       <div class="mb-3">
-        <label for="option_3" class="option">Option ${lastRow}</label>
-        <input type="text" class="form-control" id="option_${lastRow}" placeholder="add option">
+        <label for="option_${lastRow}" class="option">Option ${lastRow}</label>
+        <input type="text" class="form-control" id="option${lastRow}" placeholder="add option"  name="option">
       </div>
     </div>
     <div class="col">
-      <label for="option_3_description" class="label">Optional Description</label>
-      <input type="text" class="form-control" id="option_${lastRow}_description" placeholder="describe option">
+      <label for="option_${lastRow}_description" class="label">Optional Description </label>
+      <input type="text" class="form-control" id="description${lastRow}" placeholder="describe option", name="description">
     </div>
   </div>
   `  )
@@ -33,7 +35,7 @@ $(document).ready(function () {
     e.preventDefault()
     const lastRow = document.querySelectorAll('.option').length + 1
     $optionElement = getMarkup(lastRow)
-    if (lastRow > 4) {
+    if (lastRow > 5) {
       alert("Cannot Add , Max 5 Options")
     } else {
       $("#options-parent").append($optionElement)
