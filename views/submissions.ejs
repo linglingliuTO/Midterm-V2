@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Submissions</title>
-    <%- include('partials/_header') %>
+
+<head>
+  <title>Submissions</title>
+  <%- include('partials/_header') %>
     <link rel="stylesheet" href="/styles/layout.css" />
     <link rel="stylesheet" href="/styles/submission.css" />
 
 
-  </head>
+</head>
 
-  <body>
-    <section class="main">
-      <div id="overall_container">
-      <h1>submissions</h1>
-      <form>
-        <input id = "user_input_name" type="text" name="name" placeholder="name" />
-        <div>Question: <%= options[0].name_required %></div>
-        <div id ="poll_id" data-value=" <%= options[0].poll_id %>"></div>
-        <ul id="options-container">
-          <% options.forEach((option, i) => { %>
-            <li class="ui-state-default" id = '<%= option.id%>'>
-              <span><%= option.title %></span>
-              <input type='hidden' value='<%= option%>'/>
-            </li>
-            <%  }) %>
-        </ul>
-        <button type="submit" id="submitOptionsbtn">submit</button>
-      </form>
-    </section>
+<body>
+  <section class="main">
+    <div id="overall_container" class="pt-5">
+      <h1>Submit Your Votes</h1>
+
+      <div class="pt-8">
+        <form>
+          <input id="user_input_name" type="text" name="name" placeholder="name" />
+          <div>Question: <%= options[0].name_required %> </div>
+          <div id="poll_id" data-value=" <%= options[0].poll_id %>"></div>
+          <ul id="options-container">
+            <% options.forEach((option, i)=> { %>
+              <li class="ui-state-default" id='<%= option.id%>'>
+                <span>
+                  <%= option.title %>
+                </span>
+                <input type='hidden' value='<%= option%>' />
+              </li>
+              <% }) %>
+          </ul>
+          <button type="submit" id="submitOptionsbtn">submit</button>
+        </form>
+      </div>
+    </div>
+  </section>
   </div>
-  </body>
-  <footer><%- include('partials/_footer') %></footer>
+</body>
+<footer>
+  <%- include('partials/_footer') %>
+</footer>
+
 </html>
