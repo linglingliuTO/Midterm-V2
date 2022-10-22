@@ -19,7 +19,7 @@ $(document).ready(function () {
     <div class="col-4">
       <div class="mb-3">
         <label for="option_${lastRow}" class="option">Option ${lastRow}</label>
-        <input type="text" class="form-control" id="option${lastRow}" placeholder="add option"  name="option">
+        <input type="text" class="form-control" id="option${lastRow} is-invalid" placeholder="add option"  required name="option">
       </div>
     </div>
     <div class="col">
@@ -50,48 +50,5 @@ $(document).ready(function () {
   $("#addOptionBtn").on("click", addOption);
 
 
-
-  // id SERIAL PRIMARY KEY NOT NULL,
-  // user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  // sub_link TEXT NOT NULL,
-  // admin_link TEXT NOT NULL,
-  // name_required VARCHAR(255) NOT NULL
-
-  // id SERIAL PRIMARY KEY NOT NULL,
-  // title VARCHAR(255) NOT NULL (good),
-  // poll_id INTEGER REFERENCES polls(id) ON DELETE CASCADE,
-  // description TEXT
-
-  // const addNewPoll= () => {
-  //   // e.preventDefault()
-  //   const lastRow = document.querySelectorAll('.option').length
-
-  //   const title = $("#poll_question").val()
-  //   const sub_link  = `http://localhost:8080/submissions/`
-  //   console.log(title, sub_link, lastRow)
-  //   // for (let i = 0; i < itemOrder.length; i++) {
-  //   //   const newSubmission = {
-  //   //     voter_name: voterName,
-  //   //     option_id: itemOrder[i],
-  //   //     rank: itemOrder.length - i,
-  //   //     poll_id: pollId,
-  //   //   }
-  //     $.ajax({
-  //       method: 'get',
-  //       url: '/newpoll/',
-  //       data: newSubmission
-  //     })
-
-
-
-  //   }
-
-
-  //   // const recordResults = (e) => {
-  //   //   e.preventDefault()
-  //   //   console.log("hello!")
-  //   // }
-
-  //   $("#createPollbtn").on("click", addNewPoll);
-
 })
+module.exports = { validateForm };

@@ -19,7 +19,7 @@
       <div class="col">
         <div class="mb-4">
           <label for="poll_question" class="form-label">Please Enter Poll Question</label>
-          <input type="Question" class="form-control" id="poll_question" placeholder="Enter Question Here" name="question">
+          <input type="Question" class="form-control" id="poll_question is-invalid" placeholder="Enter Question Here"  required name="question">
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
         <div class="col-4">
           <div class="mb-3">
             <label for="option_1" class="option">Option 1</label>
-            <input type="text" class="form-control" id="option1" placeholder="add option"  name="option">
+            <input type="text" class="form-control" id="option1 is-invalid" placeholder="add option"  required name="option">
           </div>
         </div>
         <div class="col">
@@ -40,7 +40,7 @@
         <div class="col-4">
           <div class="mb-3">
             <label for="option_2" class="option">Option 2</label>
-            <input type="text" class="form-control" id="option2" placeholder="add option" name="option">
+            <input type="text" class="form-control" id="option2 is-invalid" placeholder="add option" required name="option">
           </div>
         </div>
         <div class="col">
@@ -52,7 +52,7 @@
         <div class="col-4">
           <div class="mb-3">
             <label for="option_3" class="option">Option 3</label>
-            <input type="text" class="form-control" id="option3" placeholder="add option" name="option">
+            <input type="text" class="form-control" id="option3 is-invalid" placeholder="add option" required  name="option">
           </div>
         </div>
         <div class="col">
@@ -65,7 +65,7 @@
 
     <div class ="Submissions">
 
-    <button id ="createPollbtn" class="btn btn-primary" >Submit</button>
+    <button id ="createPollbtn" class="btn btn-primary"  onsubmit="return validateForm()" >Submit</button>
 
     <button id="deleteOptionBtn" class="btn btn-outline-primary">Delete Option</button>
     <button id="addOptionBtn" class="btn btn-outline-primary">Add Option</button>
