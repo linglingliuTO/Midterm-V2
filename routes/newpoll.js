@@ -14,7 +14,14 @@ const { getLinks} = require('../db/queries/submitpoll')
 const { generateRandomString } = require('../server/helper.js');
 
 router.get('/', (req, res) => {
-  res.render('newpoll');
+  const user_name = req.session.name
+  const templateVars = {user_name};
+  if (!user_name) {
+    res.redirect("../login")
+    return
+  }
+
+  res.render('newpoll', templateVars);
 });
 
 router.post('/', (req, res) => {

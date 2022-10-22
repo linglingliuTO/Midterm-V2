@@ -18,7 +18,7 @@ const sendMailsetup =  (name, email, resultsLink, submissionLink) => {
         <p>Here are your poll results: <a href="${resultsLink}">here</a></p>
         <br>
         <h2>Poll Share</h2>
-        <p>Hare your Poll with Friends! <a href="${submissionLink}">here</a></p>
+        <p>Share your Poll with Friends! <a href="${submissionLink}">here</a></p>
       </body>
     </html>`
   };
@@ -52,7 +52,7 @@ const sendMailsetup =  (name, email, resultsLink, submissionLink) => {
           <p>Here are your poll results: <a href="${resultsLink}">here</a></p>
           <br>
           <h2>Poll Share</h2>
-          <p>Hare your Poll with Friends! <a href="${submissionLink}">here</a></p>
+          <p>Share your Poll with Friends! <a href="${submissionLink}">here</a></p>
         </body>
       </html>`
     };

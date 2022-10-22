@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
   <%- include('partials/_header') %>
+  <%- user_name = "" %>
 </head>
 <body>
-  <div class="container text-center" >
+  <div class = "ps-4 fw-bold pt-5 text-primary">
   <form class="form-inline" action="/login" method="POST">
-    <label for="RegisterUser">Log In:</label>
-    <input class="form-control" type="text" name="name" placeholder="User"
-      style="width: 300px; margin: 1em" />
+    <label for="RegisterUser" class="fs-5 ">Log In:</label>
     <input class="form-control" type="text" name="email" placeholder="Email"
       style="width: 300px; margin: 1em" />
     <input class="form-control" type="text" name="password" placeholder="Password"

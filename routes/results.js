@@ -16,7 +16,8 @@ router.get('/:uniqueKey', (req, res) => {
     const resultsData = getArray(pollresults,"result")
     const labelsData = getArray(pollresults, "title")
     const surveyName = pollname.name_required
-    const templateVars = {resultsData , labelsData,surveyName};
+    const user_name = req.session.name
+    const templateVars = {resultsData , labelsData,surveyName, user_name };
 
     res.render("results", templateVars)
   })

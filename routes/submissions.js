@@ -16,10 +16,11 @@ const {  sendMailvoted  } = require('../server/mailgun.js');
 router.get('/:uniqueKey', (req, res) => {
 
   const uniqueKey = req.params.uniqueKey
+  const user_name = req.session.name
 
   getOptions(uniqueKey)
   .then(options => {
-    const tempVars = { options: options }
+    const tempVars = { options: options,user_name  }
     res.render('submissions', tempVars)
    })
    .catch(e => res.send(e));
